@@ -1,0 +1,428 @@
+/* @font-face{
+    font-family: 'Helvetica Neue LT Pro 45 Light';
+    src:url('../../assets/Helvetica\ Neue/HelveticaNeueLTPro-Lt.otf')
+  }
+  @font-face{
+    font-family: 'Helvetica Neue LT Pro 65 Medium';
+    src:url('../../assets/Helvetica\ Neue/HelveticaNeueLTPro-Md.otf')
+  }
+  @font-face{
+    font-family: 'Helvetica Neue LT Pro 75 Bold';
+    src:url('../../assets/Helvetica\ Neue/HelveticaNeueLTPro-Bd.otf')
+  }
+  @font-face{
+    font-family: 'Helvetica Neue LT Pro 55 Roman';
+    src:url('../../assets/Helvetica\ Neue/HelveticaNeueLTPro-Roman.otf')
+  } */
+  
+  
+  #infoContainer {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    color: #000;
+    border-radius: 3px;
+    overflow: auto;
+  }
+  
+  .infoImage {
+    max-width: 500px;
+    max-height: 360px;
+    min-width: 200px;
+    min-height: 250px;
+  }
+  
+  .hot-spot-img {
+    cursor: pointer;
+    max-width: 100px;
+  }
+  
+  .info-spot-wrap {
+    cursor: pointer;
+    max-width: 100px;
+    width: 200px;
+    height: 100px;
+    margin-left: 20px;
+    margin-top: 2px;
+  }
+  
+  
+  .modal-overlay {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 100;
+    color: white;
+    overflow-y: auto;
+    padding-bottom: 30px;
+  }
+  
+  
+  
+  .info-spot-wrap-div .info-spot-wrap { 
+    display: block;
+  } 
+  .info-spot-wrap-div .info-spot-wrap-hover { 
+    display: none;
+  } 
+  .info-spot-wrap-div:hover .info-spot-wrap { 
+    display: none;
+  } 
+  .info-spot-wrap-div:hover .info-spot-wrap-hover { 
+    display: block;
+  } 
+  
+  .hot-spot-img svg path {
+    /* fill: #caf200; */
+  }
+  
+  .test-div{
+    width: 100px !important;
+    height: 100px !important;
+    background-color: red !important;
+  }
+  
+  .img-arrow {
+    background: transparent;
+    border: none !important;
+    position: absolute;
+    cursor: pointer;
+    filter: drop-shadow(0px 2px 2px rgba(39, 39, 39,0.6));
+    z-index: 20;
+    -webkit-user-select:none;
+    user-select: none;
+    -webkit-touch-callout:none;
+  }
+  
+  .img-arrow-down {
+    bottom: 110px;
+    left: 50%;
+    margin-left: -36px;
+  }
+  
+  .img-arrow-up {
+    top: 0;
+    left: 50%;
+    margin-left: -36px;
+    margin-top: 40px;
+  }
+  
+  .img-arrow-left {
+    top: 45%;
+    left: 0;
+    margin-top: -40px;
+    margin-left: 40px;
+  }
+  
+  .img-arrow-right {
+    top: 45%;
+    right: 0;
+    margin-top: -40px;
+    margin-right: 40px;
+   
+  }
+  
+  .img-arrow-left-text{
+    top: 45%;
+    left: 0;
+    margin-top: 30px;
+    margin-left: 13px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 20px;
+    color:white;
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(50px);
+    background-color: rgba(0, 0, 0, 0.65);
+    padding: 9px 16px 9px 18px;
+  }
+  
+  .img-arrow-right-text{
+    top: 45%;
+    right: 0;
+    margin-top: 30px;
+    margin-right: 13px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 20px;
+    color:white;
+    -webkit-backdrop-filter: blur(50px);
+    backdrop-filter: blur(50px);
+    background-color: rgba(0, 0, 0, 0.65);
+    padding: 9px 16px 9px 18px;
+  }
+  
+  
+  .name-plate{
+    width:fit-content;
+    height: 22px;
+    line-height: 26px;
+    transform: translate3d(0px, 0px, 0px); 
+    position: fixed;
+     top: 39px;
+      left: 57px;
+       z-index: -1;
+       padding-left: 15px;
+       font-weight: bold;
+       color: #002D74;
+       font-family: 'Helvetica Neue LT Pro 75 Bold' !important;
+       font-size: 14px !important;
+      border-left: none;
+      display: none;
+      opacity: 0;
+  }
+  
+  
+  
+  .name-plate-tag{
+    height: 24px !important;
+    position: relative;
+    top: -23.2px;
+    left: -11px;
+    z-index: -1;
+  }
+  
+  .name-plate-tag1{
+    background-color: white;
+    width: max-content;
+    height: 22px;
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 14px;
+  }
+  
+  img.vert-move-white {
+    width: 100px;
+    -webkit-animation: mover-white  0.5s infinite alternate-reverse;
+    animation: mover-white  0.5s infinite alternate-reverse;
+    animation-timing-function: ease-in;
+  }
+  @-webkit-keyframes mover-white {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-3px); }
+  }
+  @keyframes mover-white {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-3px); }
+  }
+  
+  img.vert-move-yellow {
+    width: 100px;
+    -webkit-animation: mover-yellow 0.7s;
+    animation: mover-yellow 0.7s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    z-index: 1;
+  }
+  @-webkit-keyframes mover-yellow {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-7px); }
+    40% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+    70% { transform: translateY(0); }
+    100% { transform: translateY(0); }
+  }
+  @keyframes mover-yellow {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-7px); }
+    40% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+    70% { transform: translateY(0); }
+    100% { transform: translateY(0); }
+  }
+  
+  .hide{
+    display: none;
+  }
+  
+  .fadeOut{
+    opacity:0;
+    transition: opacity 1s;
+    pointer-events: none;
+  
+  }
+  .fadeIn{
+    pointer-events: all;
+    opacity:1;
+    transition:opacity 1s;
+  }
+  
+  
+  .map-circle{
+    width: 100px;
+    position: absolute;
+    left: 0px;
+    top: 3px;
+    opacity: 0;
+    animation: map-circle 1s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    z-index: -1;
+    transform-origin: center center;
+  }
+  
+  @keyframes map-circle {
+    0% { transform: scale(0);opacity: 1; }
+    30% { transform: scale(0);opacity: 1; }
+    100% { transform: scale(1.3);opacity: 0;}
+  }
+  
+  .infospot-inner-circle{
+  pointer-events: none;
+  width: 140px;
+  height: 140px;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  animation: inner-circle 1s infinite;
+  animation-timing-function: ease;
+  }
+  
+  @keyframes inner-circle{
+    0% {transform: scale(1);}
+    23% {transform: scale(1.5);}
+    35% {transform: scale(1.2);}
+    43% {transform: scale(1.4);}
+    100% {transform: scale(1);}
+  }
+  
+  .infospot-outer-circle{
+    pointer-events: none;
+  width: 160px;
+  height: 160px;
+  position: absolute;
+  top: -30px;
+  left: -30px;
+  animation: outer-circle 1s infinite;
+  animation-timing-function: ease;
+  }
+  
+  @keyframes outer-circle{
+    0% {transform: scale(1);opacity: 0;}
+    23% {transform: scale(1);opacity: 0;}
+    29% {transform: scale(1.05);opacity: 1;}
+    100% {transform: scale(2);opacity: 0;}
+  }
+  
+  .infospot-hover-inner-circle-white{
+    pointer-events: none;
+    width: 100px;
+    animation:hover-inner-circle-white 1s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes hover-inner-circle-white{
+    0%{transform: scale(1);opacity: 1;}
+    30%{transform: scale(1.2);opacity: 0;}
+    100%{transform: scale(1.2);opacity: 0;}
+  }
+  
+  .infospot-hover-inner-circle-yellow{
+    pointer-events: none;
+    width: 200px;
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    animation:hover-inner-circle-yellow 1s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes hover-inner-circle-yellow{
+    0%{transform: scale(0);opacity: 0;}
+    30%{transform: scale(1);opacity: 1;}
+    100%{transform: scale(1);opacity: 1;}
+  }
+  
+  .infospot-hover-outer-circle{
+    pointer-events: none;
+    width: 100px;
+    position: absolute;
+    top: 0px;
+    animation:hover-outer-circle 1s;
+    animation-timing-function: ease;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes hover-outer-circle{
+    0%{transform: scale(2);opacity: 1;}
+    30%{transform: scale(0.7);opacity: 0;}
+    100%{transform: scale(0.7);opacity: 0;}
+  }
+  
+  
+  .custom-container {
+    padding-right: 15px;
+    padding-left: 15px;
+    width: 96% !important;
+  }
+  
+  
+  .cookie-overlay{
+    position: fixed !important;
+    top:0px;
+    left:0px;
+    height: 100%;
+    width: 100%;
+    pointer-events: all;
+    z-index: 100;
+  }
+  
+  .accept-cookie{
+    position:absolute;
+    bottom: 0px;
+    left: 0px;
+    overflow: hidden;
+    padding: 16px 47px 16px 31px;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    background-color: #000000;
+    color: #fff;
+    margin:20px !important;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  @media (max-width:800px) {
+    .accept-cookie{
+      flex-wrap: wrap;
+    }
+    .accept-button{
+      margin-left: 0px !important;
+    }
+  }
+  
+  .cookie-desc{
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  
+  .accept-button{
+    width: 220px;
+    height: 49px;
+    padding: 13px 80px 14px;
+    margin-left: 30px;
+    border: solid 1px #ffffff;
+    background-color: rgba(255, 255, 255, 0.24);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .accept-button:hover{
+    transition: 0.2s;
+    background-color: #0086d9;
+  }
+  
